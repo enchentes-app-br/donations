@@ -18,6 +18,7 @@ services:
     environment:
       JWT_SECRET: "${JWT_SECRET:-foobar}"
       MONGODB_URL: "mongodb://database/donations"
+    restart: "always"
   install:
     <<: *api
     command:
@@ -31,6 +32,7 @@ services:
       - "database-data:/data/db"
     networks:
       - "database"
+    restart: "always"
 
 volumes:
   database-data:
