@@ -1,5 +1,5 @@
 services:
-  donations: &donations
+  api: &api
     image: "node:20.12"
     labels:
       traefik.enable: "true"
@@ -9,7 +9,7 @@ services:
     volumes:
       - "./src:/usr/local/src"
     networks:
-      - "donations"
+      - "database"
       - "enchentes-app-br"
     working_dir: "/usr/local/src"
     command:
@@ -19,7 +19,7 @@ services:
       JWT_SECRET: "${JWT_SECRET:-foobar}"
       MONGODB_URL: "mongodb://database/donations"
   install:
-    <<: *donations
+    <<: *api
     command:
       - "npm"
       - "install"
@@ -30,13 +30,13 @@ services:
     volumes:
       - "database-data:/data/db"
     networks:
-      - "donations"
+      - "database"
 
 volumes:
   database-data:
 
 networks:
-  donations:
+  database:
   enchentes-app-br:
     name: "enchentes-app-br"
     external: true
