@@ -9,13 +9,27 @@ services:
     volumes:
       - "./src:/usr/local/src"
     networks:
+      - "donations"
       - "enchentes-app-br"
     working_dir: "/usr/local/src"
     command:
       - "npm"
       - "start"
+    environment:
+      JWT_SECRET: "${JWT_SECRET:-foobar}"
+      MONGODB_URL: "mongodb://database/donations"
+  database:
+    image: "mongo:7.0"
+    volumes:
+      - "database-data:/data/db"
+    networks:
+      - "donations"
+
+volumes:
+  database-data:
 
 networks:
+  donations:
   enchentes-app-br:
     name: "enchentes-app-br"
     external: true
