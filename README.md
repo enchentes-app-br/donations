@@ -1,6 +1,6 @@
 # donations
 
-Donations Service
+Donations Service <http://donations.localhost/docs>
 
 ```
 docker compose run --rm install
