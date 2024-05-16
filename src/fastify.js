@@ -6,6 +6,8 @@ import FastifyPluginMongoDB from '@fastify/mongodb';
 import FastifyPluginCORS from '@fastify/cors';
 import FastifyPluginJWT from '@fastify/jwt';
 
+import { promises as fs } from 'fs';
+
 const fastify = Fastify({
   logger: true,
   ajv: {
@@ -22,6 +24,7 @@ await fastify.register(FastifyPluginSwagger, {
     info: {
       title: process.env.npm_package_name,
       version: process.env.npm_package_version,
+      description: await fs.readFile('./README.md', 'utf8'),
     },
   },
 });
