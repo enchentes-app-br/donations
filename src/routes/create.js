@@ -52,7 +52,7 @@ export default {
     delete donation.long;
 
     await this.mongo.db.collection('donations')
-      .insertOne(element);
+      .insertOne(donation);
 
     reply.status(201)
       .send({ _id });
