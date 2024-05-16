@@ -29,7 +29,7 @@ se determinada doação é confiável conforme votos informados.
 
 ### Fluxo Quero Ajudar
 
-```
+```console
 JWT_TOKEN=`
 curl "https://tokens.enchentes.app.br/v1/tokens" \
     --request POST \
@@ -40,13 +40,16 @@ curl "https://donations.enchentes.app.br/v1/donations" \
     --request POST \
     --oauth2-bearer "$JWT_TOKEN" \
     --header 'Content-Type: application/json' \
-    --data '{ "lat": 0, "long": 0, "types": [ "FOOD" ], "contact": { "whatsapp": "+5551999999999" } }' \
-    --silent
+    --data '{ "lat": -30.03305600, "long": -51.23000000, "types": [ "CLOTHES" ], "contact": { "whatsapp": "+5551987654321" } }' \
+    --silent \
+    | jq
 ```
 
 ### Fluxo Preciso de Ajuda
 
-```
-curl "https://donations.enchentes.app.br/v1/donations?lat=0&long=0&type=FOOD" \
-    --request GET
+```console
+curl "https://donations.enchentes.app.br/v1/location/-30.03305600/-51.23000000/donations?type=CLOTHES" \
+    --request GET \
+    --silent \
+    | jq
 ```
