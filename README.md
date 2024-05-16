@@ -3,6 +3,6 @@
 Donations Service
 
 ```
-docker compose run --rm donations npm install
+docker compose run --rm install
 docker compose up --detach
 ```
