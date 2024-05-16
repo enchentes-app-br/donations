@@ -2,6 +2,19 @@ import fastify from './fastify.js';
 
 // -------------------------------------------------------------------------------------------------
 
+import DonationsSchemaType from './schemas/Type.js';
+import DonationsSchemaContact from './schemas/Contact.js';
+import DonationsSchemaDonation from './schemas/Donation.js';
+import DonationsSchemaIdentifier from './schemas/Identifier.js';
+
+import DonationsRouteCreate from './routes/create.js';
+
+fastify.addSchema(DonationsSchemaType);
+fastify.addSchema(DonationsSchemaContact);
+fastify.addSchema(DonationsSchemaDonation);
+fastify.addSchema(DonationsSchemaIdentifier);
+
+fastify.post('/v1/donations', DonationsRouteCreate);
 
 // -------------------------------------------------------------------------------------------------
 

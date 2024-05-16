@@ -26,6 +26,15 @@ await fastify.register(FastifyPluginSwagger, {
       version: process.env.npm_package_version,
       description: await fs.readFile('./README.md', 'utf8'),
     },
+    components: {
+      securitySchemes: {
+        Token: {
+          type: 'http',
+          scheme: 'Bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
 });
 
