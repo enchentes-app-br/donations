@@ -11,7 +11,7 @@ export default {
     summary: 'Create a Donation',
     tags: ['donations'],
     security: [ { Token: [] } ],
-    body: { $ref: 'Donation' },
+    body: { $ref: 'DonationContent' },
     response: {
       201: { $ref: 'Identifier' },
       401: { type: 'null', description: 'Unauthorized' },

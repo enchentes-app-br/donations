@@ -73,6 +73,7 @@ export default {
 
     const donations = dataset.map((data) => {
       return {
+        _id: data._id,
         lat: data.location.coordinates[1],
         long: data.location.coordinates[0],
         types: data.types,
