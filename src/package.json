@@ -1,6 +1,6 @@
 {
   "name": "@enchentes-app-br/donations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Donations Service",
   "type": "module",
   "main": "index.js",
